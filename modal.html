@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+ 
+
+
+    <!-- modal -->
+    <div class="modal">
+        <div class="box">
+            <img src="img/logo.png" alt="" width="90px">
+            <hr> 
+            <span>Enregistrement effectuer avec succès!</span>
+            <button><a href="index.php">RETOUR</a></button>
+        </div>
+    </div>
+
+
+
+
+    
+    
+</body>
+</html>
+
+<style>
+    :root {
+    --red: rgb(243, 99, 47) ;
+    --blue: rgb(47,66,120);
+    --banner:#1200b130;
+    --dark: #092032;
+    --body: #516171;
+    --border: rgba(0,0,0,0.08);
+    --shadow: 0px 6px 30px rgba(36, 36, 36, 0.076);
+    --shadowBlue: 0px 10px 20px -10px var(--blue);
+    
+}
+body{
+    background:  rgba(47, 67, 120, 0.082);
+}
+    img{
+        margin-top: 10px;
+    }
+    .modal{
+        border-radius: 5px;
+        width: 500px;
+        height: 200px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        box-shadow: 0px 0px 20px -10px black;
+        background: white;
+
+    }
+    .box{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    button{
+        border-radius: 5px;
+        background: var(--blue);
+        padding: 10px 20px;
+        border: none;
+        color: white;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+    button:hover{
+        box-shadow: var(--shadowBlue);
+    }
+    span{
+        font-size: 30px;
+        
+    }
+    a{
+        text-decoration: none;
+        color: white;
+    }
+
+    @media (max-width:451px) {   
+        span{
+            font-size:20px
+        }
+
+        .modal{
+            width: 400px;
+        }
+        img{
+            width: 70px;
+        }
+    }
+        
+ 
+</style>

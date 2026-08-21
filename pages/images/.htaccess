@@ -1,0 +1,29 @@
+# Dossier d'uploads : aucun script ne doit jamais y etre execute.
+# C'est ce controle qui empeche un fichier deposé via le formulaire de
+# preinscription de devenir un webshell.
+
+# Coupe l'interpreteur PHP pour tout ce dossier (mod_php).
+<IfModule mod_php.c>
+    php_flag engine off
+</IfModule>
+<IfModule mod_php7.c>
+    php_flag engine off
+</IfModule>
+<IfModule mod_php5.c>
+    php_flag engine off
+</IfModule>
+
+# Ceinture et bretelles : refuse aussi de servir les extensions executables,
+# y compris les variantes (.php5, .phtml, .phar) et les doubles extensions
+# du type "cv.pdf.php".
+<FilesMatch "\.(?:php[0-9]*|phtml|phps|phar|pht|cgi|pl|py|asp|aspx|sh|htaccess)$">
+    Require all denied
+</FilesMatch>
+
+# Empeche l'execution via les handlers/types alternatifs.
+RemoveHandler .php .php3 .php4 .php5 .php7 .php8 .phtml .phar
+RemoveType .php .php3 .php4 .php5 .php7 .php8 .phtml .phar
+AddType text/plain .php .php5 .phtml .phar
+
+# Pas de listing du dossier (les CV sont des donnees personnelles).
+Options -Indexes -ExecCGI

@@ -1,0 +1,22 @@
+# Identifiants de la base : ne doivent jamais etre publies.
+connexion.php
+
+# Applications Laravel hebergees sous ce dossier : depot separe.
+/my/
+/test/
+
+# Coquilles vides d'anciens sous-domaines.
+/app/
+/hpa_school_gestion/
+
+# Documents deposes par les visiteurs : donnees personnelles.
+/cv/
+/diplome/
+
+# Sauvegardes, exports, archives et journaux.
+*.sql
+*.bak
+*.zip
+*.log
+.DS_Store
+Thumbs.db
