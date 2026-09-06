@@ -2,6 +2,9 @@
  session_start();
  if(!$_SESSION["user"]) {
    header("location: page_identification.php");
+   // header() ne stoppe pas l'execution : sans exit, le script continue et
+   // supprime le produit meme sans authentification valide
+   exit;
  }
 
  include("../connexion.php");

@@ -2,6 +2,9 @@
 session_start();
 if(!$_SESSION["user"]) {
   header("location: page_identification.php");
+  // header() ne stoppe pas l'execution : sans exit, le script continue,
+  // interroge la base et renvoie son contenu meme sans redirection suivie
+  exit;
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
