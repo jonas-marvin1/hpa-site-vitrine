@@ -50,10 +50,10 @@ $errorMessage = "";
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
-    
+
      <!--fav icone-->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -62,15 +62,15 @@ $errorMessage = "";
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
-    
-    
-    
+
+
+
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <!--<link rel="icon" type="image/png" href="../assets/img/favicon.png">-->
   <title>
-HPA-CONNEXION
+Connexion — Administration du site HPA
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -82,46 +82,107 @@ HPA-CONNEXION
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.7" rel="stylesheet" />
-  <!-- Nepcha Analytics (nepcha.com) -->
-  <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
-  <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+  <style>
+    /* Identité "administration du site public", distincte du LMS (qui utilise l'orange comme accent principal) */
+    .admin-top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background-color: #1b365d;
+      z-index: 1050;
+    }
+
+    .admin-logo {
+      max-width: 140px;
+    }
+
+    .admin-badge {
+      display: inline-block;
+      background-color: #e8edf5;
+      color: #1b365d;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border-radius: 50px;
+    }
+
+    .admin-title {
+      color: #1b365d;
+    }
+
+    .admin-domain {
+      color: #adb5bd;
+      font-size: 0.8rem;
+    }
+
+    .admin-card {
+      max-width: 450px;
+      width: 100%;
+      border-radius: 1rem;
+      box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-admin-connexion {
+      background-color: #f15b24;
+      border-color: #f15b24;
+      color: #fff;
+    }
+
+    .btn-admin-connexion:hover,
+    .btn-admin-connexion:focus {
+      background-color: #d94e1c;
+      border-color: #d94e1c;
+      color: #fff;
+    }
+  </style>
 </head>
 
 <body class="">
+  <div class="admin-top-bar"></div>
   <main class="main-content  mt-0">
     <section>
       <div class="page-header min-vh-75">
         <div class="container">
           <div class="row">
             <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
-              <div class="card card-plain mt-8">
-                <div class="card-header pb-0 text-left bg-transparent">
-                  <h3 class="font-weight-bolder text-info text-gradient" >Se connecter</h3>
-                  <p class="mb-0">Entrer vos coordonnées svp !</p>
+
+              <div class="text-center mb-4">
+                <img src="../assets/img/logo.png" alt="Logo HPA" class="admin-logo">
+              </div>
+
+              <?php if (!empty($errorMessage)): ?>
+              <div class="alert alert-danger text-center" role="alert">
+                <?php echo $errorMessage; ?>
+              </div>
+              <?php endif; ?>
+
+              <div class="card card-plain admin-card mx-auto">
+                <div class="card-header pb-0 text-center bg-transparent">
+                  <span class="admin-badge mb-3">Administration du site</span>
+                  <h3 class="font-weight-bolder admin-title mt-3">Connexion</h3>
+                  <p class="mb-0 text-secondary">Contenus du site public, préinscriptions et candidatures</p>
+                  <p class="admin-domain mb-0">hpacademya.com</p>
                 </div>
                 <div class="card-body">
 
                   <form role="form" method="post" >
-                    <label>User</label>
+                    <label>Identifiant</label>
                     <div class="mb-3">
-                      <input type="text" name="user" class="form-control" placeholder="User" aria-label="Email" aria-describedby="email-addon">
+                      <input type="text" name="user" class="form-control" placeholder="Identifiant" aria-label="Identifiant" autocomplete="username" autofocus>
                     </div>
                     <label>Mot de passe</label>
                     <div class="mb-3">
-                      <input type="password" name="mdp" class="form-control" placeholder="Mot de passe" aria-label="Password" aria-describedby="password-addon">
+                      <input type="password" name="mdp" class="form-control" placeholder="Mot de passe" aria-label="Password" autocomplete="current-password">
                     </div>
-                   
+
                     <div class="text-center">
-                      <button type="submit" name="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Valider</button>
+                      <button type="submit" name="submit" class="btn btn-admin-connexion w-100 mt-4 mb-0">Se connecter</button>
                     </div>
                   </form>
-                  
-                  
-                  
-                  
-                  
-                  
-                  <div id="error-message" class="error"><?php echo $errorMessage; ?></div>
 
 
 
@@ -167,36 +228,3 @@ HPA-CONNEXION
 </body>
 
 </html>
-
-
-<style>
-    /* Style CSS pour les messages d'erreur */
-.error {
-  color: #ff0000; /* Couleur du texte en rouge */
-  font-size: 14px; /* Taille de la police */
-  font-weight: bold; /* Texte en gras */
-  margin-top: 10px; /* Marge supérieure pour espacement */
-text-align: center;
-}
-  
-  
-}
-
-
-</style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
