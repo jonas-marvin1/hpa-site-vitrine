@@ -279,8 +279,10 @@ HPA-PREINSCRIT
                               // et accents, qui cassaient le lien sans encodage.
                               // Si aucun fichier n'a ete fourni, on n'emet pas de lien : sinon
                               // le href pointait sur "../diplome/", donc sur le listing du dossier.
+                              // Le fichier est desormais servi par document.php (authentifie),
+                              // le dossier diplome/ etant bloque en acces direct par .htaccess.
                               $lien_diplome = !empty($row['diplome'])
-                                  ? '../diplome/' . rawurlencode($row['diplome'])
+                                  ? 'document.php?type=diplome&fichier=' . rawurlencode($row['diplome'])
                                   : '';
                             ?>
                             <a href="<?php echo $lien_diplome !== '' ? htmlspecialchars($lien_diplome, ENT_QUOTES) : 'javascript:void(0)'; ?>"
@@ -302,8 +304,10 @@ HPA-PREINSCRIT
                         <div >
                           <div>
                             <?php
+                              // Le fichier est desormais servi par document.php (authentifie),
+                              // le dossier cv/ etant bloque en acces direct par .htaccess.
                               $lien_cv = !empty($row['cv'])
-                                  ? '../cv/' . rawurlencode($row['cv'])
+                                  ? 'document.php?type=cv&fichier=' . rawurlencode($row['cv'])
                                   : '';
                             ?>
                             <a href="<?php echo $lien_cv !== '' ? htmlspecialchars($lien_cv, ENT_QUOTES) : 'javascript:void(0)'; ?>"
