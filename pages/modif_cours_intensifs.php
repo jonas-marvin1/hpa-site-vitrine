@@ -3,7 +3,10 @@ session_start();
 if(!$_SESSION["user"])
 {
   header("location: page_identification.php");
-} 
+  // header() ne stoppe pas l'execution : sans exit, le script continue et
+  // modifie les donnees meme sans authentification valide
+  exit;
+}
 ?>
 
 <?php 
