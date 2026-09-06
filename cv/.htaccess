@@ -1,0 +1,5 @@
+# Documents nominatifs des preinscrits : acces direct interdit,
+# seul document.php (authentifie) doit pouvoir les lire sur le serveur.
+Require all denied
+Deny from all
+Options -Indexes

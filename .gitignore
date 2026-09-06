@@ -10,8 +10,12 @@ connexion.php
 /hpa_school_gestion/
 
 # Documents deposes par les visiteurs : donnees personnelles.
-/cv/
-/diplome/
+# Le contenu est exclu, mais les .htaccess qui bloquent l'acces direct
+# doivent rester versionnes : un deploiement sans eux rouvre les dossiers.
+/cv/*
+!/cv/.htaccess
+/diplome/*
+!/diplome/.htaccess
 
 # Sauvegardes, exports, archives et journaux.
 *.sql
