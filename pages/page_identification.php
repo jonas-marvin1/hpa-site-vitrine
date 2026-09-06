@@ -20,11 +20,13 @@ $errorMessage = "";
         $hashFromDatabase = $row["mdp"];
         
         if (password_verify($mdp, $hashFromDatabase)) {
-            
+
+            session_regenerate_id(true);
             $_SESSION["user"] = $user;
-            $_SESSION["mdp"] = $mdp;
-            
+            // On ne stocke pas le mot de passe en session : il n'est lu nulle part dans le site.
+
             header("location:dashbord_formation.php");
+            exit;
         } else {
              $errorMessage = "MOT DE PASSE INCORRECT";
             // echo "MOT DE PASSE INCORRECT";
